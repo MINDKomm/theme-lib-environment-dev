@@ -4,7 +4,7 @@
     "description": "Optimizations for a local WordPress theme development environment",
     "license": "MIT",
     "require": {
-      "mindkomm/theme-lib-environment": "dev-master",
+      "mindkomm/theme-lib-environment": "^1.0.0",
       "php": ">=7.0.0"
     },
     "autoload": {
