@@ -39,6 +39,8 @@ class WordPress {
 
 		add_filter( 'wp_mail', function( $args ) use ( $email ) {
 			$args['to'] = $email;
+
+			return $args;
 		} );
 	}
 }
