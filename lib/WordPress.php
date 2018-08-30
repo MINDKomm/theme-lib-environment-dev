@@ -12,6 +12,8 @@ class WordPress {
 	 * Init hooks.
 	 */
 	public function init() {
+		( new Development_Favicon() )->init();
+
 		if ( is_admin() ) {
 			add_action( 'init', [ $this, 'disable_heartbeat' ], 1 );
 		}

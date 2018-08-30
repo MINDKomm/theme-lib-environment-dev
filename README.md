@@ -14,7 +14,10 @@ composer require mindkomm/theme-lib-environment-dev
 
 By default, the development environment:
 
-- Disables heartbeat
+- Disables heartbeat.
+- Adds a custom 🚀 favicon for development enviroments.
+
+To activate the feature, use the following code:
 
 **functions.php**
 
@@ -22,6 +25,28 @@ By default, the development environment:
 if ( is_dev() ) {
     $wpdev = new Theme\Environment\Development\WordPress();
     $wpdev->init();
+}
+```
+
+### Development Favicon
+
+For the development favicon feature to work well, you’ll need to render your favicons through a `render_theme_favicon()` function. The development favicon feature will unhook your `render_theme_favicon` function from `wp_head` and add its own code.
+
+**functions.php**
+
+```php
+/**
+ * Add the theme favicon into theme head
+ */
+add_action( 'wp_head', 'render_theme_favicon' );
+
+/**
+ * Render favicons.
+ *
+ * This needs to be a separate function so that it can be unhooked.
+ */
+function render_theme_favicon() {
+    Timber\Timber::render( 'favicons.twig', Timber\Timber::get_context() );
 }
 ```
 
